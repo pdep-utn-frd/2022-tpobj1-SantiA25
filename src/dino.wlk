@@ -15,6 +15,7 @@ object juego{
 		game.addVisual(fruta)
 		game.addVisual(iconoSalud)
 		game.addVisual(marcadorSalud)
+		game.addVisual(serpiente)
 	    game.boardGround("fondo Juego.jpg")
 		keyboard.space().onPressDo{ self.jugar()}
 		
@@ -30,6 +31,7 @@ object juego{
 		fruta.iniciar()
 		iconoSalud.iniciar()
 		musica.iniciar()
+		serpiente.iniciar()
 		}
 		
 	
@@ -51,6 +53,7 @@ object juego{
 		dino.morir()
 		fruta.detener()
 		musica.detener()
+		serpiente.detener()
 		
 	}
 	
@@ -223,4 +226,36 @@ object musica{ //agrego musica de fondo, se reproduce en ciclo al terminar ,pero
  	  fondo.stop()
  }
 }
+object serpiente{
+	const posicionInicial = game.at(game.width()-12,suelo.position().y())
+	var position = posicionInicial
+
+	method image() = "serpiente.png"
+	method position() = position
+	
+	method iniciar(){
+		position = posicionInicial
+		game.onTick(velocidad*0.8,"moverSerpiente",{self.mover()})
+	}
+	
+	method mover(){
+		position = position.left(1)
+		if (position.x() == -1)
+			position = game.at(game.width()-1,suelo.position().y())
+	}
+	
+	method chocar(){  
+		if (dino.verSalud()> 10){
+		 dino.lastimar()
+		 game.say(dino,"Aauch!")}
+		else{
+		juego.terminar()
+		game.say(iconoSalud,"Perdiste")}
+		
+	}
+    method detener(){
+		game.removeTickEvent("moverSerpiente")
+	}
+}
+	
 
