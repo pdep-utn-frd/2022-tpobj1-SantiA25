@@ -101,7 +101,7 @@ object cactus {
 			position = posicionInicial
 	}
 	
-	method chocar(){
+	method chocar(){  // ahora en vez de matar de una a Dino,el cactus le reduce 10 de vida
 		if (dino.verSalud()> 10){
 		 dino.lastimar()
 		 game.say(dino,"Aauch!")}
@@ -169,7 +169,7 @@ object dino {
 	return salud > 10
 	}
 }
-object fruta{
+object fruta{  // Nuevo objeto,interactua con Dino y le cura 10 de vida 
 	const posicionInicial = game.at(game.width()-1,3)
 	var position = posicionInicial
 
