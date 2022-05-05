@@ -212,7 +212,7 @@ object iconoSalud{
 	}
 }
 
-object musica{
+object musica{ //agrego musica de fondo, se reproduce en ciclo al terminar ,pero no vuelve a reproducirse si Dino muere y reinicio el juego 
 	const fondo = game.sound("Musica fondo.mp3")
 	
 	method iniciar(){
