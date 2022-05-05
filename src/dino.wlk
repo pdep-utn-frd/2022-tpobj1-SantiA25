@@ -223,10 +223,4 @@ object musica{
  	  fondo.stop()
  }
 }
-/*object danio{ 
-	const golpe= game.sound("Daño.mp3")
-	
-	method golpe(){
-		return golpe
-	}
-}*/
+
